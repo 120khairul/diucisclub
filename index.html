@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Club - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><a href="index.html" class="active"><img src="images\logo.png" style="width: 50px;border-radius: 50px;"></a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="members.html">Join</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <canvas id="particles"></canvas>
+        <div class="carousel">
+            <div class="carousel-slide active">
+                <img src="https://thumbs.dreamstime.com/b/vibrant-abstract-energy-waves-cosmic-background-glowing-aurora-k-digital-art-artwork-features-set-against-light-354886961.jpg" alt="AI cosmic energy background">
+                <div class="hero-content">
+                    <h1>Welcome to CIS Club</h1>
+                    <p>Computing and Information System Club - Pioneering AI Innovation</p>
+                    <a href="members.html" class="btn">Join Us</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://thumbs.dreamstime.com/b/abstract-fractal-artwork-fiery-golden-core-flowing-blue-patterns-symbolizing-energy-creation-cosmic-cycle-futuristic-410864903.jpg" alt="AI fractal energy">
+                <div class="hero-content">
+                    <h1>AI Future 2025</h1>
+                    <p>48-hour AI innovation challenge</p>
+                    <a href="events.html" class="btn">Learn More</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://www.shutterstock.com/shutterstock/videos/3838800857/thumb/1.jpg?ip=x480" alt="AI data flow visualization">
+                <div class="hero-content">
+                    <h1>Build AI Skills</h1>
+                    <p>Hands-on AI learning</p>
+                    <a href="resources.html" class="btn">Resources</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-prev">❮</button>
+        <button class="carousel-next">❯</button>
+    </div>
+
+    <main>
+        <section class="featured">
+            <div class="container">
+                <h2>Featured Event</h2>
+                <div class="event-card" data-category="hackathon">
+                    <img src="https://www.shutterstock.com/image-vector/cyber-big-data-flow-particles-600nw-2575132213.jpg" alt="Featured AI event">
+                    <h3>Programming Contest</h3>
+                    <p>Dec 20-21 · Prizes 50k BDT</p>
+                    <a href="event-detail.html" class="btn">Details</a>
+                </div>
+            </div>
+        </section>
+        <section class="featured">
+            <div class="container">
+                <h2>Featured Event</h2>
+                <div class="event-card" data-category="hackathon">
+                    <img src="https://www.shutterstock.com/image-vector/cyber-big-data-flow-particles-600nw-2575132213.jpg" alt="Featured AI event">
+                    <h3>Programming Contest</h3>
+                    <p>Dec 20-21 · Prizes 50k BDT</p>
+                    <a href="event-detail.html" class="btn">Details</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CIS Club - Computing and Information System Club · Powered by AI Innovation</p>
+            <div class="social">
+                <a href="https://www.facebook.com/diucisclub/">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top">↑</button>
+
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="Enlarged gallery image">
+        <span class="close">×</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

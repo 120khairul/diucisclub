@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Club - Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><a href="index.html" class="active"><img src="images\logo.png" style="width: 50px;border-radius: 50px;"></a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="members.html">Join</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="events">
+            <div class="container">
+                <h1>Upcoming AI Events</h1>
+                <input type="text" id="event-search" placeholder="Search AI events...">
+                <div class="filter">
+                    <button data-filter="all" class="active">All</button>
+                    <button data-filter="workshop">Workshops</button>
+                    <button data-filter="hackathon">Hackathons</button>
+                    <button data-filter="seminar">Seminars</button>
+                    <button data-filter="social">Social</button>
+                </div>
+                <div class="events-grid">
+                    <div class="event-card" data-category="hackathon">
+                        <div style="background:#ba68c8; height:220px; border-radius:16px;"></div>
+                        <h3>AI Future Hack 2025</h3>
+                        <p>Dec 20-21 · 48hr · Prizes 50k</p>
+                        <a href="event-detail.html" class="btn">Details</a>
+                    </div>
+                    <div class="event-card" data-category="workshop">
+                        <div style="background:#d500f9; height:220px; border-radius:16px;"></div>
+                        <h3>AI Basics Workshop</h3>
+                        <p>Nov 30 · 2pm-5pm</p>
+                        <a href="#" class="btn">Register</a>
+                    </div>
+                    <div class="event-card" data-category="seminar">
+                        <div style="background:#9c27b0; height:220px; border-radius:16px;"></div>
+                        <h3>AI Ethics Seminar</h3>
+                        <p>Dec 5 · 4pm</p>
+                        <a href="#" class="btn">Register</a>
+                    </div>
+                    <div class="event-card" data-category="workshop">
+                        <div style="background:#e91e63; height:220px; border-radius:16px;"></div>
+                        <h3>Machine Learning Bootcamp</h3>
+                        <p>Dec 10 · Full day</p>
+                        <a href="#" class="btn">Register</a>
+                    </div>
+                    <div class="event-card" data-category="social">
+                        <div style="background:#ba68c8; height:220px; border-radius:16px;"></div>
+                        <h3>AI Networking Night</h3>
+                        <p>Dec 15 · 6pm</p>
+                        <a href="#" class="btn">RSVP</a>
+                    </div>
+                    <div class="event-card" data-category="hackathon">
+                        <div style="background:#d500f9; height:220px; border-radius:16px;"></div>
+                        <h3>Mini AI Hack</h3>
+                        <p>Dec 18 · 8pm-midnight</p>
+                        <a href="#" class="btn">Join</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CIS Club - Daffodil International University</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top">↑</button>
+    <div id="lightbox"><img id="lightbox-img" src=""><span class="close">×</span></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

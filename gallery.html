@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Club - Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><a href="index.html" class="active"><img src="images\logo.png" style="width: 50px;border-radius: 50px;"></a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="members.html">Join</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery">
+            <div class="container">
+                <h1>AI Event Gallery</h1>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image1.jpg" alt="AI Workshop 2024">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">AI Workshop 2024</h3>
+                            <p class="gallery-description">Hands-on machine learning session</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image2.jpg" alt="Neural Network Demo">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Neural Network Demo</h3>
+                            <p class="gallery-description">Live demonstration of deep learning</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image3.jpg" alt="Tech Conference">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Tech Conference</h3>
+                            <p class="gallery-description">Annual AI technology summit</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image4.jpg" alt="Coding Competition">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Coding Competition</h3>
+                            <p class="gallery-description">AI programming challenge</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image5.jpg" alt="Robotics Exhibition">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Robotics Exhibition</h3>
+                            <p class="gallery-description">AI-powered robotics showcase</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image6.jpg" alt="Data Science Workshop">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Data Science Workshop</h3>
+                            <p class="gallery-description">Big data analysis techniques</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image7.jpg" alt="AI Innovation Day">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">AI Innovation Day</h3>
+                            <p class="gallery-description">Showcasing student projects</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image8.jpg" alt="Machine Learning Seminar">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">ML Seminar</h3>
+                            <p class="gallery-description">Advanced algorithms discussion</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image9.jpg" alt="AI Research Presentation">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Research Presentation</h3>
+                            <p class="gallery-description">Cutting-edge AI research</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="gallery-img" src="images/image10.jpg" alt="Future Tech Expo">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Future Tech Expo</h3>
+                            <p class="gallery-description">Emerging technologies showcase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CIS Club - Daffodil International University</p>
+            <div class="social">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="scroll-top" title="Back to Top">
+        <span>↑</span>
+    </a>
+
+    <!-- Enhanced Lightbox with Fixed Positioning -->
+    <div id="lightbox">
+        <div class="lightbox-content">
+            <span class="close">&times;</span>
+            <button class="nav-btn" id="prev-btn">❮</button>
+            <img id="lightbox-img" src="" alt="Enlarged gallery image">
+            <button class="nav-btn" id="next-btn">❯</button>
+            <div class="lightbox-info">
+                <h3 class="lightbox-title"></h3>
+                <p class="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Club - Join</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><a href="index.html" class="active"><img src="images\logo.png" style="width: 50px;border-radius: 50px;"></a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="members.html" class="active">Join</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="members">
+            <div class="container">
+                <h1>Join CIS Club</h1>
+                <h2>Membership Benefits</h2>
+                <ul>
+                    <li>Access to AI workshops and events</li>
+                    <li>Networking with AI industry leaders</li>
+                    <li>AI project collaboration</li>
+                    <li>Free AI resources and tools</li>
+                    <li>AI leadership opportunities</li>
+                </ul>
+                <h2>Join Form</h2>
+                <form id="joinForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    
+                    <label for="studentId">Student ID:</label>
+                    <input type="number" id="studentId" name="studentId">
+                    
+                    <label for="department">Department:</label>
+                    <select id="department" name="department">
+                        <option value="">Select</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="it">Information Technology</option>
+                        <option value="se">Software Engineering</option>
+                    </select>
+                    
+                    <label>Interests:</label>
+                    <input type="checkbox" id="ai" name="interests" value="AI">
+                    <label for="ai">AI/ML</label>
+                    <input type="checkbox" id="web" name="interests" value="Web">
+                    <label for="web">AI Web Dev</label>
+                    <input type="checkbox" id="cyber" name="interests" value="Cyber">
+                    <label for="cyber">AI Cybersecurity</label>
+                    
+                    <label>Year:</label>
+                    <input type="radio" id="year1" name="year" value="1">
+                    <label for="year1">1st Year</label>
+                    <input type="radio" id="year2" name="year" value="2">
+                    <label for="year2">2nd Year</label>
+                    <input type="radio" id="year3" name="year" value="3">
+                    <label for="year3">3rd Year</label>
+                    <input type="radio" id="year4" name="year" value="4">
+                    <label for="year4">4th Year</label>
+                    
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob">
+                    
+                    <label for="message">Why join our AI-focused club?</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                    
+                    <button type="submit" class="btn">Submit</button>
+                    <button type="reset" class="btn">Reset</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CIS Club - Daffodil International University</p>
+            <div class="social">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top">↑</button>
+
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="Enlarged gallery image">
+        <span class="close">×</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Club - Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><a href="index.html" class="active"><img src="images\logo.png" style="width: 50px;border-radius: 50px;"></a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="members.html">Join</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <form id="contactForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject">
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="6"></textarea>
+                    
+                    <button type="submit" class="btn">Send</button>
+                    <button type="reset" class="btn">Reset</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CIS Club - Daffodil International University</p>
+            <div class="social">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top">↑</button>
+
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="Enlarged gallery image">
+        <span class="close">×</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
