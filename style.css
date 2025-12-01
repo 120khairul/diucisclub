@@ -23,7 +23,7 @@ body {
 h1, h2, h3, h4 {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
-    color: #d500f9;
+    color: #ffffff;
 }
 
 .container {
@@ -38,16 +38,16 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(106, 27, 154, 0.8);
-    backdrop-filter: blur(15px);
+    background: rgba(70, 76, 78, 0.8);
+    backdrop-filter: blur(3px);
     z-index: 1000;
-    box-shadow: 0 5px 20px rgba(186, 104, 200, 0.3);
+    box-shadow: 0 5px 20px rgba(31, 23, 32, 0.3);
     animation: headerPulse 3s ease-in-out infinite;
 }
 
 @keyframes headerPulse {
-    0%, 100% { box-shadow: 0 5px 20px rgba(186, 104, 200, 0.3); }
-    50% { box-shadow: 0 5px 30px rgba(225, 190, 231, 0.5); }
+    0%, 100% { box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); }
+    50% { box-shadow: 0 5px 30px rgb(9, 0, 128); }
 }
 
 header .container {
@@ -60,8 +60,8 @@ header .container {
 .logo {
     font-size: 1.8rem;
     font-weight: 900;
-    color: #e1bee7;
-    text-shadow: 0 0 15px #ba68c8;
+    color: #120461;
+    text-shadow: 0 0 15px #423844;
 }
 
 .nav ul {
@@ -70,7 +70,7 @@ header .container {
 }
 
 .nav a {
-    color: #e1bee7;
+    color: #00bcf5;
     text-decoration: none;
     font-weight: 600;
     position: relative;
@@ -79,7 +79,7 @@ header .container {
 }
 
 .nav a:hover, .nav a.active {
-    color: #d500f9;
+    color: #bd9100;
     transform: scale(1.1);
 }
 
@@ -90,7 +90,7 @@ header .container {
     bottom: -4px;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #ba68c8, #d500f9);
+    background: linear-gradient(90deg, #882f2b, #660377);
     transition: width 0.4s ease;
 }
 
@@ -108,9 +108,9 @@ header .container {
 .hamburger span {
     width: 28px;
     height: 3px;
-    background: #e1bee7;
+    background: #ff0000;
     border-radius: 2px;
-    box-shadow: 0 0 10px #ba68c8;
+    box-shadow: 0 0 10px #00ee0c;
 }
 
 main {
