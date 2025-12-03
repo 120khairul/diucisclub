@@ -356,4 +356,257 @@ document.addEventListener("DOMContentLoaded", () => {
             initParticles();
         });
     }
+
+    /* ------------------------------
+       MAP ANIMATIONS AND COUNTERS
+    --------------------------------*/
+    function initMapAnimations() {
+        // Counter animation for stats
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        if (statNumbers.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target;
+                        const target = parseInt(statNumber.getAttribute('data-count'));
+                        const duration = 2000; // 2 seconds
+                        const step = target / (duration / 16); // 60fps
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                statNumber.textContent = target.toLocaleString();
+                                clearInterval(timer);
+                            } else {
+                                statNumber.textContent = Math.floor(current).toLocaleString();
+                            }
+                        }, 16);
+                        
+                        observer.unobserve(statNumber);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statNumbers.forEach(stat => observer.observe(stat));
+        }
+        
+        // Map loading animation
+        const mapIframe = document.querySelector('.map-iframe iframe');
+        const mapWrapper = document.querySelector('.map-wrapper');
+        
+        if (mapIframe && mapWrapper) {
+            // Create loading overlay
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'map-loading';
+            loadingOverlay.innerHTML = `
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading Map...</div>
+            `;
+            
+            mapWrapper.appendChild(loadingOverlay);
+            
+            // Remove loading overlay when iframe loads
+            mapIframe.addEventListener('load', () => {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                setTimeout(() => {
+                    loadingOverlay.remove();
+                }, 500);
+            });
+        }
+        
+        // Interactive map pins animation
+        createMapPins();
+    }
+
+    function createMapPins() {
+        const mapContainer = document.querySelector('.map-container');
+        if (!mapContainer) return;
+        
+        // Create floating pins/particles around the map
+        for (let i = 0; i < 8; i++) {
+            const pin = document.createElement('div');
+            pin.className = 'map-pin';
+            pin.style.cssText = `
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background: radial-gradient(circle, #e9c600ff, transparent);
+                border-radius: 50%;
+                z-index: 3;
+                pointer-events: none;
+                animation: pinFloat ${3 + i * 0.5}s ease-in-out infinite;
+                animation-delay: ${i * 0.2}s;
+                left: ${10 + (i * 10)}%;
+                top: ${20 + (i * 7)}%;
+            `;
+            
+            mapContainer.appendChild(pin);
+        }
+        
+        // Add CSS for pin animation
+        if (!document.querySelector('#pin-animation-style')) {
+            const style = document.createElement('style');
+            style.id = 'pin-animation-style';
+            style.textContent = `
+                @keyframes pinFloat {
+                    0%, 100% {
+                        transform: translateY(0) scale(1);
+                        opacity: 0.7;
+                    }
+                    50% {
+                        transform: translateY(-20px) scale(1.1);
+                        opacity: 0.9;
+                    }
+                }
+                
+                .map-pin::before {
+                    content: '📍';
+                    position: absolute;
+                    font-size: 20px;
+                    top: -10px;
+                    left: -5px;
+                    filter: drop-shadow(0 0 5px rgba(103, 2, 121, 0.7));
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    /* ------------------------------
+       FOOTER ANIMATIONS
+    --------------------------------*/
+    function initFooterParticles() {
+        const particlesContainer = document.querySelector('.footer-particles');
+        if (!particlesContainer) return;
+        
+        // Clear existing particles
+        particlesContainer.innerHTML = '';
+        
+        // Create particles with random directions from center
+        const particleCount = window.innerWidth < 768 ? 8 : 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random angle and distance for each particle
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 100 + Math.random() * 200;
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+            
+            particle.style.cssText = `
+                --i: ${Math.random() * 10};
+                --x: ${x}px;
+                --y: ${y}px;
+                animation-duration: ${Math.random() * 8 + 6}s;
+                animation-delay: ${Math.random() * 5}s;
+            `;
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    function initFooterAnimations() {
+        // Animate year counter
+        const yearElement = document.querySelector('.year');
+        if (yearElement) {
+            const currentYear = new Date().getFullYear();
+            yearElement.textContent = currentYear;
+            yearElement.setAttribute('data-year', currentYear);
+            
+            // Restart pulse animation every 2 seconds
+            setInterval(() => {
+                yearElement.style.animation = 'none';
+                setTimeout(() => {
+                    yearElement.style.animation = 'yearPulse 2s ease-in-out infinite';
+                }, 10);
+            }, 2000);
+        }
+        
+        // Social link hover effects
+        const socialLinks = document.querySelectorAll('.social-link');
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                const icon = link.querySelector('.social-icon');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(15deg)';
+                }
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                const icon = link.querySelector('.social-icon');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+        
+        // Create particles for footer background
+        initFooterParticles();
+    }
+
+    /* ------------------------------
+       INITIALIZE ALL COMPONENTS
+    --------------------------------*/
+    
+    // Initialize map animations
+    initMapAnimations();
+    
+    // Initialize footer animations
+    initFooterAnimations();
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Reinitialize footer particles on resize
+            initFooterParticles();
+            
+            // Resize canvas if exists
+            const canvas = document.getElementById("particles");
+            if (canvas) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
+                // Reinitialize particles
+                if (window.initParticles) {
+                    window.initParticles();
+                }
+            }
+        }, 250);
+    });
+    
+    // Expose initParticles globally for resize handling
+    if (canvas) {
+        window.initParticles = () => {
+            if (window.initParticlesFunc) {
+                window.initParticlesFunc();
+            }
+        };
+    }
+});
+
+// Helper function to check button styles (for debugging)
+function checkButtonStyles() {
+    const btn = document.querySelector('.event-card .btn');
+    if (btn) {
+        console.log('Button styles:', window.getComputedStyle(btn));
+        console.log('Margin left:', window.getComputedStyle(btn).marginLeft);
+        console.log('Margin right:', window.getComputedStyle(btn).marginRight);
+        console.log('Display:', window.getComputedStyle(btn).display);
+        console.log('Button is centered:', 
+            window.getComputedStyle(btn).marginLeft === 'auto' && 
+            window.getComputedStyle(btn).marginRight === 'auto'
+        );
+    }
+}
+
+// Run on page load to verify button centering
+window.addEventListener('load', () => {
+    // Check button centering after all styles are loaded
+    setTimeout(checkButtonStyles, 500);
 });

@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIS Club - Events</title>
+    <title>CIS Club - AI Events</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <header>
         <div class="container">
-            <div class="logo"><a href="index.html" class="active"><img src="images\logo.png" style="width: 50px;border-radius: 50px;"></a></div>
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="CIS Club Logo" style="width: 50px;border-radius: 50px;"></a>
+            </div>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -29,53 +32,213 @@
     </header>
 
     <main>
-        <section class="events">
+        <h1 style="text-align: center;">EVENTS</h1>
+        <section class="events-grid-section">
+            
             <div class="container">
-                <h1>Upcoming AI Events</h1>
-                <input type="text" id="event-search" placeholder="Search AI events...">
-                <div class="filter">
-                    <button data-filter="all" class="active">All</button>
-                    <button data-filter="workshop">Workshops</button>
-                    <button data-filter="hackathon">Hackathons</button>
-                    <button data-filter="seminar">Seminars</button>
-                    <button data-filter="social">Social</button>
+                <div id="events-container" class="events-grid">
+                    <!-- Event Card 1: Hackathon -->
+                    <div class="event-card" data-category="hackathon" data-date="2025-12-20" data-search="ai future hack 2025 hackathon 48 hours">
+                        <div class="event-image">
+                            <img src="images/ai-hackathon.jpg" alt="AI Future Hack 2025" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">
+                            <div class="event-badge hackathon">Hackathon</div>
+                            <div class="event-date-badge">Dec 20-21</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">AI Future Hack 2025</h3>
+                            <div class="event-meta">
+                                <span class="event-location"><i class="fas fa-map-marker-alt"></i> Online & Campus</span>
+                                <span class="event-time"><i class="far fa-clock"></i> 48 Hours</span>
+                            </div>
+                            <p class="event-description">48-hour AI hackathon with $50,000 in prizes. Build innovative AI solutions with mentorship from industry experts.</p>
+                            <div class="event-tags">
+                                <span class="tag">AI/ML</span>
+                                <span class="tag prize">$50K Prizes</span>
+                                <span class="tag">Beginner Friendly</span>
+                            </div>
+                            <div class="event-footer">
+                                <a href="event-detail.html?event=ai-hackathon-2025" class="btn event-btn">View Details</a>
+                                <span class="event-status"><i class="fas fa-fire"></i> 150+ Registered</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 2: Workshop -->
+                    <div class="event-card" data-category="workshop" data-date="2025-11-30" data-search="ai fundamentals workshop basic machine learning">
+                        <div class="event-image">
+                            <img src="images/ai-workshop.jpg" alt="AI Basics Workshop" onerror="this.src='https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">
+                            <div class="event-badge workshop">Workshop</div>
+                            <div class="event-date-badge">Nov 30</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">AI Fundamentals Workshop</h3>
+                            <div class="event-meta">
+                                <span class="event-location"><i class="fas fa-map-marker-alt"></i> Tech Lab 101</span>
+                                <span class="event-time"><i class="far fa-clock"></i> 3 Hours</span>
+                            </div>
+                            <p class="event-description">Learn the basics of AI, machine learning, and neural networks. No prior experience required.</p>
+                            <div class="event-tags">
+                                <span class="tag">Beginner</span>
+                                <span class="tag free">Free</span>
+                                <span class="tag">Hands-on</span>
+                            </div>
+                            <div class="event-footer">
+                                <a href="https://forms.google.com/your-registration-link" target="_blank" class="btn event-btn">Register Now</a>
+                                <span class="event-status"><i class="fas fa-bullseye"></i> Limited Seats</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 3: Seminar -->
+                    <div class="event-card" data-category="seminar" data-date="2025-12-05" data-search="ai ethics seminar responsibility discussion">
+                        <div class="event-image">
+                            <img src="images/ai-ethics.jpg" alt="AI Ethics Seminar" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">
+                            <div class="event-badge seminar">Seminar</div>
+                            <div class="event-date-badge">Dec 5</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">AI Ethics & Responsibility</h3>
+                            <div class="event-meta">
+                                <span class="event-location"><i class="fas fa-map-marker-alt"></i> Auditorium Hall</span>
+                                <span class="event-time"><i class="far fa-clock"></i> 2 Hours</span>
+                            </div>
+                            <p class="event-description">Discussion on ethical AI development, bias prevention, and responsible AI implementation.</p>
+                            <div class="event-tags">
+                                <span class="tag">Ethics</span>
+                                <span class="tag">Discussion</span>
+                                <span class="tag">Industry</span>
+                            </div>
+                            <div class="event-footer">
+                                <a href="https://forms.google.com/your-registration-link" target="_blank" class="btn event-btn">RSVP Free</a>
+                                <span class="event-status"><i class="fas fa-user-friends"></i> Guest Speakers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 4: Workshop -->
+                    <div class="event-card" data-category="workshop" data-date="2025-12-10" data-search="machine learning bootcamp python tensorflow">
+                        <div class="event-image">
+                            <img src="images/ml-bootcamp.jpg" alt="ML Bootcamp" onerror="this.src='https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">
+                            <div class="event-badge workshop">Workshop</div>
+                            <div class="event-date-badge">Dec 10</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">Machine Learning Bootcamp</h3>
+                            <div class="event-meta">
+                                <span class="event-location"><i class="fas fa-map-marker-alt"></i> Computer Lab 304</span>
+                                <span class="event-time"><i class="far fa-clock"></i> 8 Hours</span>
+                            </div>
+                            <p class="event-description">Full-day intensive workshop on practical ML algorithms and real-world applications.</p>
+                            <div class="event-tags">
+                                <span class="tag">Intermediate</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">TensorFlow</span>
+                            </div>
+                            <div class="event-footer">
+                                <a href="https://forms.google.com/your-registration-link" target="_blank" class="btn event-btn">Enroll Now</a>
+                                <span class="event-status"><i class="fas fa-bolt"></i> Early Bird</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 5: Networking -->
+                    <div class="event-card" data-category="social" data-date="2025-12-15" data-search="ai networking night social meet professionals">
+                        <div class="event-image">
+                            <img src="images/ai-networking.jpg" alt="AI Networking Night" onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">
+                            <div class="event-badge social">Networking</div>
+                            <div class="event-date-badge">Dec 15</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">AI Networking Night</h3>
+                            <div class="event-meta">
+                                <span class="event-location"><i class="fas fa-map-marker-alt"></i> Innovation Hub</span>
+                                <span class="event-time"><i class="far fa-clock"></i> 3 Hours</span>
+                            </div>
+                            <p class="event-description">Connect with AI professionals, researchers, and fellow students. Food and drinks provided.</p>
+                            <div class="event-tags">
+                                <span class="tag">Networking</span>
+                                <span class="tag">Social</span>
+                                <span class="tag free">Free</span>
+                            </div>
+                            <div class="event-footer">
+                                <a href="https://forms.google.com/your-registration-link" target="_blank" class="btn event-btn">Confirm Attendance</a>
+                                <span class="event-status"><i class="fas fa-pizza-slice"></i> Food & Drinks</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 6: Hackathon -->
+                    <div class="event-card" data-category="hackathon" data-date="2025-12-18" data-search="midnight ai mini hack quick beginner">
+                        <div class="event-image">
+                            <img src="images/mini-hackathon.jpg" alt="Mini AI Hack" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">
+                            <div class="event-badge hackathon">Mini Hack</div>
+                            <div class="event-date-badge">Dec 18</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">Midnight AI Mini-Hack</h3>
+                            <div class="event-meta">
+                                <span class="event-location"><i class="fas fa-map-marker-alt"></i> 24/7 Lab</span>
+                                <span class="event-time"><i class="far fa-clock"></i> 4 Hours</span>
+                            </div>
+                            <p class="event-description">Quick 4-hour hackathon focused on creative AI solutions. Perfect for beginners!</p>
+                            <div class="event-tags">
+                                <span class="tag">Beginner Friendly</span>
+                                <span class="tag">Quick</span>
+                                <span class="tag">Fun</span>
+                            </div>
+                            <div class="event-footer">
+                                <a href="https://forms.google.com/your-registration-link" target="_blank" class="btn event-btn">Join Team</a>
+                                <span class="event-status"><i class="fas fa-trophy"></i> Small Prizes</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="events-grid">
-                    <div class="event-card" data-category="hackathon">
-                        <div style="background:#ba68c8; height:220px; border-radius:16px;"></div>
-                        <h3>AI Future Hack 2025</h3>
-                        <p>Dec 20-21 · 48hr · Prizes 50k</p>
-                        <a href="event-detail.html" class="btn">Details</a>
-                    </div>
-                    <div class="event-card" data-category="workshop">
-                        <div style="background:#d500f9; height:220px; border-radius:16px;"></div>
-                        <h3>AI Basics Workshop</h3>
-                        <p>Nov 30 · 2pm-5pm</p>
-                        <a href="#" class="btn">Register</a>
-                    </div>
-                    <div class="event-card" data-category="seminar">
-                        <div style="background:#9c27b0; height:220px; border-radius:16px;"></div>
-                        <h3>AI Ethics Seminar</h3>
-                        <p>Dec 5 · 4pm</p>
-                        <a href="#" class="btn">Register</a>
-                    </div>
-                    <div class="event-card" data-category="workshop">
-                        <div style="background:#e91e63; height:220px; border-radius:16px;"></div>
-                        <h3>Machine Learning Bootcamp</h3>
-                        <p>Dec 10 · Full day</p>
-                        <a href="#" class="btn">Register</a>
-                    </div>
-                    <div class="event-card" data-category="social">
-                        <div style="background:#ba68c8; height:220px; border-radius:16px;"></div>
-                        <h3>AI Networking Night</h3>
-                        <p>Dec 15 · 6pm</p>
-                        <a href="#" class="btn">RSVP</a>
-                    </div>
-                    <div class="event-card" data-category="hackathon">
-                        <div style="background:#d500f9; height:220px; border-radius:16px;"></div>
-                        <h3>Mini AI Hack</h3>
-                        <p>Dec 18 · 8pm-midnight</p>
-                        <a href="#" class="btn">Join</a>
+
+                <!-- No Results Message -->
+                <div id="no-results" class="no-results">
+                    <i class="fas fa-search fa-3x"></i>
+                    <h3>No events found</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                    <button class="btn reset-filters" id="reset-all">Reset All Filters</button>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="upcoming-events">
+                    <h2 class="upcoming-title"><i class="fas fa-calendar-alt"></i> Coming Soon</h2>
+                    <div class="upcoming-grid">
+                        <div class="upcoming-card">
+                            <div class="upcoming-date">
+                                <span class="date-day">Jan</span>
+                                <span class="date-num">15</span>
+                            </div>
+                            <div class="upcoming-info">
+                                <h4>AI Career Fair 2026</h4>
+                                <p>Meet top AI companies and startups</p>
+                                <span class="upcoming-time"><i class="far fa-clock"></i> 10:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="upcoming-card">
+                            <div class="upcoming-date">
+                                <span class="date-day">Feb</span>
+                                <span class="date-num">22</span>
+                            </div>
+                            <div class="upcoming-info">
+                                <h4>Deep Learning Workshop</h4>
+                                <p>Advanced neural networks tutorial</p>
+                                <span class="upcoming-time"><i class="far fa-clock"></i> 2:00 PM - 6:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="upcoming-card">
+                            <div class="upcoming-date">
+                                <span class="date-day">Mar</span>
+                                <span class="date-num">08</span>
+                            </div>
+                            <div class="upcoming-info">
+                                <h4>Robotics & AI Expo</h4>
+                                <p>Showcase of latest robotics projects</p>
+                                <span class="upcoming-time"><i class="far fa-clock"></i> All Day Event</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,12 +246,29 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2025 CIS Club - Daffodil International University</p>
+        <div class="footer-particles"></div>
+        <div class="container centered">
+            <div class="footer-content">
+                <div class="footer-left centered">
+                    <div class="footer-logo">CIS CLUB</div>
+                    <p class="copyright">
+                        © <span class="year">2025</span> Computing and Information System Club
+                        <span class="powered"> • Powered by <span class="ai-text">AI Innovation</span></span>
+                    </p>
+                </div>
+                
+                <div class="social-links centered">
+                    <a href="https://www.facebook.com/diucisclub/" class="social-link" target="_blank">
+                        <i class="fab fa-facebook social-icon"></i>
+                        <span class="social-text">Facebook</span>
+                    </a>
+                    
+                </div>
+            </div>
         </div>
     </footer>
 
-    <button class="scroll-top">↑</button>
+    <button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
     <div id="lightbox"><img id="lightbox-img" src=""><span class="close">×</span></div>
 
     <script src="app.js"></script>
