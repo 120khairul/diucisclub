@@ -358,6 +358,286 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ------------------------------
+       JOIN FORM ENHANCEMENTS - INTEGRATED
+    --------------------------------*/
+    const joinForm = document.getElementById('joinForm');
+
+    if (joinForm) {
+        // Create success message element
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.innerHTML = `
+            <h3>🎉 Application Submitted!</h3>
+            <p>Thank you for applying to join the CIS Club! We'll review your application and contact you soon.</p>
+            <button class="success-btn">Continue</button>
+        `;
+        document.body.appendChild(successMessage);
+        
+        // Animate form elements on load
+        const formElements = joinForm.querySelectorAll('input, select, textarea, label');
+        formElements.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                el.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 100 + (index * 50));
+        });
+
+        // Input focus effects
+        const inputs = joinForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement?.classList.add('focused');
+                
+                // Add floating label effect
+                const label = document.querySelector(`label[for="${this.id}"]`);
+                if (label) {
+                    label.style.color = '#00d4ff';
+                    label.style.transform = 'translateY(-5px)';
+                    label.style.fontSize = '0.8rem';
+                }
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement?.classList.remove('focused');
+                
+                // Reset label if empty
+                if (!this.value) {
+                    const label = document.querySelector(`label[for="${this.id}"]`);
+                    if (label) {
+                        label.style.color = '';
+                        label.style.transform = '';
+                        label.style.fontSize = '';
+                    }
+                }
+            });
+            
+            // Real-time validation
+            input.addEventListener('input', function() {
+                validateField(this);
+            });
+        });
+
+        // Form submission
+        joinForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // Add loading animation
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Processing...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Reset button
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Reset form with animation
+                    setTimeout(() => {
+                        joinForm.reset();
+                        inputs.forEach(input => {
+                            input.style.animation = 'none';
+                            setTimeout(() => {
+                                input.style.animation = 'pulse 0.5s';
+                            }, 10);
+                        });
+                    }, 1000);
+                }, 1500);
+            } else {
+                // Shake form for error
+                joinForm.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    joinForm.style.animation = '';
+                }, 500);
+            }
+        });
+
+        // Form reset
+        joinForm.addEventListener('reset', function() {
+            inputs.forEach(input => {
+                input.classList.remove('valid', 'invalid');
+                const label = document.querySelector(`label[for="${input.id}"]`);
+                if (label) {
+                    label.style.color = '';
+                    label.style.transform = '';
+                    label.style.fontSize = '';
+                }
+            });
+        });
+
+        // Success message close
+        successMessage.querySelector('.success-btn').addEventListener('click', function() {
+            successMessage.style.display = 'none';
+        });
+
+        // Validation functions
+        function validateField(field) {
+            const value = field.value.trim();
+            let isValid = true;
+            
+            switch(field.type) {
+                case 'email':
+                    isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+                    break;
+                case 'number':
+                    isValid = /^\d+$/.test(value);
+                    break;
+                case 'text':
+                case 'textarea':
+                    isValid = value.length > 0;
+                    break;
+                case 'select-one':
+                    isValid = value !== '';
+                    break;
+            }
+            
+            if (field.required) {
+                field.classList.toggle('invalid', !isValid);
+                field.classList.toggle('valid', isValid && value.length > 0);
+            }
+            
+            return isValid;
+        }
+        
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate required fields
+            const requiredFields = joinForm.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            // Validate at least one interest
+            const interests = joinForm.querySelectorAll('input[name="interests"]:checked');
+            if (interests.length === 0) {
+                const interestLabel = document.querySelector('label[for="ai"]').parentElement.previousElementSibling;
+                if (interestLabel && interestLabel.textContent.includes('Interests')) {
+                    interestLabel.style.color = '#ff2a6d';
+                    setTimeout(() => {
+                        interestLabel.style.color = '';
+                    }, 2000);
+                }
+                isValid = false;
+            }
+            
+            // Validate year selection
+            const yearSelected = joinForm.querySelector('input[name="year"]:checked');
+            if (!yearSelected) {
+                const yearLabel = document.querySelector('label[for="year1"]').parentElement.previousElementSibling;
+                if (yearLabel && yearLabel.textContent.includes('Year')) {
+                    yearLabel.style.color = '#ff2a6d';
+                    setTimeout(() => {
+                        yearLabel.style.color = '';
+                    }, 2000);
+                }
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Add floating particles effect to form
+        createFormParticles();
+    }
+
+    function createFormParticles() {
+        const form = document.getElementById('joinForm');
+        if (!form) return;
+        
+        const particlesContainer = document.createElement('div');
+        particlesContainer.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: inherit;
+            z-index: 0;
+        `;
+        form.prepend(particlesContainer);
+        
+        // Create particles
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 6 + 2}px;
+                height: ${Math.random() * 6 + 2}px;
+                background: ${Math.random() > 0.5 ? '#00d4ff' : '#d500f9'};
+                border-radius: 50%;
+                opacity: ${Math.random() * 0.4 + 0.1};
+                animation: floatParticle ${Math.random() * 10 + 10}s linear infinite;
+                animation-delay: ${Math.random() * 5}s;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+            `;
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Add CSS for particle animation
+        if (!document.querySelector('#particle-animation')) {
+            const style = document.createElement('style');
+            style.id = 'particle-animation';
+            style.textContent = `
+                @keyframes floatParticle {
+                    0% {
+                        transform: translate(0, 0) rotate(0deg);
+                        opacity: 0.1;
+                    }
+                    25% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(90deg);
+                        opacity: 0.3;
+                    }
+                    50% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(180deg);
+                        opacity: 0.5;
+                    }
+                    75% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(270deg);
+                        opacity: 0.3;
+                    }
+                    100% {
+                        transform: translate(0, 0) rotate(360deg);
+                        opacity: 0.1;
+                    }
+                }
+                
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+                
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+                    70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+                }
+                
+                @keyframes borderFlow {
+                    0% { background-position: 0% 0%; }
+                    100% { background-position: 200% 0%; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    /* ------------------------------
        MAP ANIMATIONS AND COUNTERS
     --------------------------------*/
     function initMapAnimations() {
@@ -418,7 +698,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         // Interactive map pins animation
-        createMapPins();
+        
     }
 
     function createMapPins() {
@@ -546,6 +826,47 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Create particles for footer background
         initFooterParticles();
+    }
+
+    /* ------------------------------
+       ADDITIONAL JOIN FORM ENHANCEMENTS
+    --------------------------------*/
+    // Add border flow animation
+    const formBorderAnimation = `
+    @keyframes borderFlow {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 200% 0%; }
+    }
+    `;
+
+    if (!document.querySelector('#border-flow')) {
+        const style = document.createElement('style');
+        style.id = 'border-flow';
+        style.textContent = formBorderAnimation;
+        document.head.appendChild(style);
+    }
+
+    // Auto-format student ID
+    const studentIdInput = document.getElementById('studentId');
+    if (studentIdInput) {
+        studentIdInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 8) {
+                value = value.substring(0, 8);
+            }
+            e.target.value = value;
+        });
+    }
+
+    // Add date picker restrictions
+    const dobInput = document.getElementById('dob');
+    if (dobInput) {
+        const today = new Date();
+        const minDate = new Date(today.getFullYear() - 50, today.getMonth(), today.getDate());
+        const maxDate = new Date(today.getFullYear() - 16, today.getMonth(), today.getDate());
+        
+        dobInput.min = minDate.toISOString().split('T')[0];
+        dobInput.max = maxDate.toISOString().split('T')[0];
     }
 
     /* ------------------------------
